@@ -17,10 +17,7 @@ This template publishes a [datannur](https://datannur.com) catalog on GitHub Pag
 ## Quick start
 
 1. Click **Use this template** → **Create a new repository** (public).
-2. In your new repository: **Settings → Pages → Source: GitHub Actions**.
-
-   ![Pages settings: Build and deployment, Source: GitHub Actions](.github/assets/pages-settings.png)
-
+2. In your new repository, open **Settings**, pick **Pages** in the left sidebar, and under *Build and deployment* switch **Source** from *Deploy from a branch* to **GitHub Actions**.
 3. Edit a file or upload your own data (see below). Each commit triggers a build.
 4. After ~2 minutes, your catalog is live at `https://<account>.github.io/<repository>/`.
 
