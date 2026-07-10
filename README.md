@@ -1,7 +1,12 @@
-# datannur-template
+![datannur logo](https://raw.githubusercontent.com/datannur/datannur/main/package/app/assets/main-banner-dark.png?raw=true#gh-dark-mode-only)
+![datannur logo](https://raw.githubusercontent.com/datannur/datannur/main/package/app/assets/main-banner.png?raw=true#gh-light-mode-only)
 
-<!-- Point the badge at your own repository: replace datannur/datannur-template -->
+<!-- Point the build and demo badges at your own repository: replace datannur/datannur-template and the Pages URL -->
+[![MIT License](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Build catalog](https://github.com/datannur/datannur-template/actions/workflows/build.yml/badge.svg)](https://github.com/datannur/datannur-template/actions/workflows/build.yml)
+[![Demo](https://img.shields.io/badge/demo-live-success)](https://datannur.github.io/datannur-template/)
+
+# datannur-template
 
 Get your own data catalog online in 5 minutes — no server, no database, no local install.
 
