@@ -24,7 +24,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           fetch-depth: 0 # full history, needed by git-restore-mtime
 
@@ -33,7 +33,7 @@ jobs:
       # scan cache below, unchanged files are skipped instead of rescanned.
       - uses: chetan/git-restore-mtime-action@v2
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.14"
           cache: pip
@@ -41,7 +41,7 @@ jobs:
 
       # Reuse the scan cache between runs: only new or changed files are
       # rescanned, and unchanged remote URLs are not re-downloaded.
-      - uses: actions/cache@v4
+      - uses: actions/cache@v6
         with:
           path: catalog/data/db/_scan
           key: scan-${{ github.run_id }}
@@ -70,7 +70,7 @@ jobs:
             echo '```'
           } >> "$GITHUB_STEP_SUMMARY"
 
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-pages-artifact@v5
         if: github.event_name != 'pull_request'
         with:
           path: catalog
@@ -108,4 +108,4 @@ jobs:
           fi
       - id: deployment
         if: steps.pages_check.outputs.enabled == 'true'
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
