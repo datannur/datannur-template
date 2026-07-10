@@ -1,0 +1,9 @@
+# Generated catalog (built by CI, published to GitHub Pages)
+catalog/
+
+# Python
+__pycache__/
+.venv/
+
+# OS
+.DS_Store

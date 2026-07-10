@@ -1,0 +1,39 @@
+# datannur catalog configuration
+# Docs: https://docs.datannur.com/builder/
+
+# Where the catalog web app is generated (published to GitHub Pages by CI)
+app_path: ./catalog
+
+# Fail the CI build if a dataset fails to scan or a metadata file is
+# invalid, instead of silently publishing a truncated catalog
+on_scan_error: fail
+on_metadata_error: fail
+
+add:
+  # Every file dropped in datasets/ is scanned automatically:
+  # variables, types, stats, preview
+  - folder: ./datasets
+
+  # Public URLs are scanned the same way — no file in the repo, no download
+  # to maintain. Describe each dataset right here:
+  - dataset: https://raw.githubusercontent.com/datasets/population/main/data/population.csv
+    metadata:
+      name: World population
+      description: >
+        World population by country and year, straight from a public URL.
+        Variables, stats and preview are extracted automatically —
+        this name and description are the only manual part.
+      link: https://github.com/datasets/population
+
+  - dataset: https://raw.githubusercontent.com/codeforgermany/click_that_hood/main/public/data/switzerland.geojson
+    metadata:
+      name: Swiss cantons boundaries
+      description: >
+        Boundaries of the 26 Swiss cantons from a public GeoJSON URL —
+        geographic files get a map preview in the catalog. Pairs with the
+        cantons statistics in datasets/swiss_cantons.csv.
+      link: https://github.com/codeforgermany/click_that_hood
+
+# Optional: enrich scanned datasets or reference external ones with
+# CSV/Excel metadata files — see "Editing metadata" in the README.
+# metadata_path: ./metadata

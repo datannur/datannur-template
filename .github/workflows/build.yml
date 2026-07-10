@@ -1,0 +1,87 @@
+name: Build catalog
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+  # Scheduled rebuilds keep URL-based datasets fresh (stats, previews,
+  # update dates) without needing a commit. Uncomment the line matching
+  # how often your remote data changes:
+  # schedule:
+  #   - cron: "17 6 * * *"   # daily at 06:17 UTC — fast-moving data (APIs, live portals)
+  #   - cron: "17 6 * * 1"   # weekly on Monday — typical open data
+  #   - cron: "17 6 1 * *"   # monthly on the 1st — reference data
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # full history, needed by git-restore-mtime
+
+      # Give each file the date of its last commit (checkout resets dates to
+      # "now"): the catalog shows real update dates, and together with the
+      # scan cache below, unchanged files are skipped instead of rescanned.
+      - uses: chetan/git-restore-mtime-action@v2
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.14"
+          cache: pip
+          cache-dependency-path: .github/workflows/build.yml
+
+      # Reuse the scan cache between runs: only new or changed files are
+      # rescanned, and unchanged remote URLs are not re-downloaded.
+      - uses: actions/cache@v4
+        with:
+          path: catalog/data/db/_scan
+          key: scan-${{ github.run_id }}
+          restore-keys: scan-
+
+      # geo: GeoJSON/Shapefile/GeoTIFF + maps · stat: SAS/SPSS/Stata labels.
+      # More extras (databases, s3, delta…): https://docs.datannur.com/builder/
+      - run: pip install "datannurpy[geo,stat]>=0.29.3"
+
+      - name: Build catalog
+        shell: bash
+        run: python -m datannurpy catalog.yml 2>&1 | tee build.log
+
+      - name: Write job summary
+        if: always()
+        shell: bash
+        run: |
+          {
+            echo '### Catalog build'
+            echo '```'
+            cat build.log
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - uses: actions/upload-pages-artifact@v3
+        if: github.event_name != 'pull_request'
+        with:
+          path: catalog
+
+  # Pull requests run the build job above as a validation check, no deploy.
+  deploy:
+    if: github.event_name != 'pull_request'
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
