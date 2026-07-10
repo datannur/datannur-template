@@ -9,9 +9,9 @@ on:
   # dates) without needing a commit, and turns a vanished source into a
   # visible red build. Adjust to how often your remote data changes:
   schedule:
-    - cron: "17 6 * * 1" # weekly on Monday 06:17 UTC — typical open data
-    # - cron: "17 6 * * *"   # daily — fast-moving data (APIs, live portals)
-    # - cron: "17 6 1 * *"   # monthly on the 1st — reference data
+    - cron: "39 3 * * 1" # weekly on Monday 03:39 UTC — typical open data
+    # - cron: "39 3 * * *"   # daily — fast-moving data (APIs, live portals)
+    # - cron: "39 3 1 * *"   # monthly on the 1st — reference data
 
 permissions:
   contents: read
