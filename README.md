@@ -54,7 +54,7 @@ Everything you commit to a public repository is public, including the files in `
 You never need a local install — but if you want to preview changes before committing:
 
 ```bash
-pip install "datannurpy[geo,stat]>=0.29.3"
+pip install "datannurpy[geo,stat]>=0.29.5"
 python -m datannurpy catalog.yml
 # then open catalog/index.html in your browser
 ```
