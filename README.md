@@ -60,11 +60,11 @@ python -m datannurpy catalog.yml
 ## What's in this template
 
 ```
-├── catalog.yml                  # your catalog: config + datasets + descriptions
-├── datasets/                    # your data files (scanned automatically)
-│   ├── swiss_cantons.csv        # example — delete it whenever you want
+├── catalog.yml                     # your catalog: config + datasets + descriptions
+├── datasets/                       # your data files (scanned automatically)
+│   ├── swiss_cantons.csv           # example — delete it whenever you want
 │   └── swiss_unemployment.parquet  # example with embedded dataset + column descriptions
-└── .github/workflows/build.yml  # build & deploy to GitHub Pages
+└── .github/workflows/build.yml     # build & deploy to GitHub Pages
 ```
 
 Delete the example files and URLs whenever you want — the next commit rebuilds the catalog from what's left.
