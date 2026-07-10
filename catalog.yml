@@ -16,23 +16,24 @@ add:
 
   # Public URLs are scanned the same way — no file in the repo, no download
   # to maintain. Describe each dataset right here:
-  - dataset: https://raw.githubusercontent.com/datasets/population/main/data/population.csv
+  - dataset: https://d37ci6vzurychx.cloudfront.net/trip-data/green_tripdata_2025-01.parquet
     metadata:
-      name: World population
+      name: NYC green taxi trips (January 2025)
       description: >
-        World population by country and year, straight from a public URL.
-        Variables, stats and preview are extracted automatically —
-        this name and description are the only manual part.
-      link: https://github.com/datasets/population
+        Trip records straight from the NYC Taxi & Limousine Commission —
+        48,000 trips scanned from a public URL. Variables, stats, preview
+        and update date are extracted automatically; this name and
+        description are the only manual part.
+      link: https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page
 
-  - dataset: https://raw.githubusercontent.com/codeforgermany/click_that_hood/main/public/data/switzerland.geojson
+  - dataset: https://www2.census.gov/geo/tiger/GENZ2023/shp/cb_2023_us_state_20m.zip
     metadata:
-      name: Swiss cantons boundaries
+      name: US states boundaries
       description: >
-        Boundaries of the 26 Swiss cantons from a public GeoJSON URL —
-        geographic files get a map preview in the catalog. Pairs with the
-        cantons statistics in datasets/swiss_cantons.csv.
-      link: https://github.com/codeforgermany/click_that_hood
+        Cartographic state boundaries from the US Census Bureau — a zipped
+        Shapefile scanned from a public URL, with a map preview in the
+        catalog.
+      link: https://www.census.gov/geographies/mapping-files/time-series/geo/cartographic-boundary.html
 
 # Optional: enrich scanned datasets or reference external ones with
 # CSV/Excel metadata files — see "Editing metadata" in the README.
