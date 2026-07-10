@@ -49,14 +49,10 @@ jobs:
 
       # geo: GeoJSON/Shapefile/GeoTIFF + maps · stat: SAS/SPSS/Stata labels.
       # More extras (databases, s3, delta…): https://docs.datannur.com/builder/
-      - run: pip install "datannurpy[geo,stat]>=0.29.3"
+      - run: pip install "datannurpy[geo,stat]>=0.29.5"
 
       - name: Build catalog
         shell: bash
-        env:
-          # Silence a harmless polars warning when scanning geo files
-          # (geoarrow.wkb loaded as its storage type, which is what we want)
-          POLARS_UNKNOWN_EXTENSION_TYPE_BEHAVIOR: load_as_storage
         run: python -m datannurpy catalog.yml 2>&1 | tee build.log
 
       - name: Write job summary
