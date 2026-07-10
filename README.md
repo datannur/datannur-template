@@ -17,8 +17,9 @@ This template publishes a [datannur](https://datannur.com) catalog on GitHub Pag
 ## Quick start
 
 1. Click **Use this template** → **Create a new repository** (public).
-2. That's it — the first build starts on its own, enables GitHub Pages and publishes your catalog. After ~2 minutes it is live at `https://<account>.github.io/<repository>/` (link in the **Actions** tab, or in **Settings → Pages**).
-3. Edit a file or upload your own data (see below). Each commit rebuilds and republishes the catalog.
+2. In your new repository, open **Settings**, pick **Pages** in the left sidebar, and under *Build and deployment* switch **Source** from *Deploy from a branch* to **GitHub Actions**.
+3. Open the **Actions** tab and re-run the first workflow (or just push any change — each commit rebuilds the catalog).
+4. After ~2 minutes, your catalog is live at `https://<account>.github.io/<repository>/`.
 
 > **Forked instead of using the template?** GitHub disables workflows on forks by default: open the **Actions** tab and click **I understand my workflows, go ahead and enable them** first.
 
