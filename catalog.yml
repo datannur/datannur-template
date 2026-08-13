@@ -26,14 +26,14 @@ add:
         description are the only manual part.
       link: https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page
 
-  - dataset: https://www2.census.gov/geo/tiger/GENZ2023/shp/cb_2023_us_state_20m.zip
+  - dataset: https://d37ci6vzurychx.cloudfront.net/misc/taxi_zones.zip
     metadata:
-      name: US states boundaries
+      name: NYC taxi zones
       description: >
-        Cartographic state boundaries from the US Census Bureau — a zipped
+        Taxi zone boundaries matching the trip records above — a zipped
         Shapefile scanned from a public URL, with a map preview in the
         catalog.
-      link: https://www.census.gov/geographies/mapping-files/time-series/geo/cartographic-boundary.html
+      link: https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page
 
 # Optional: enrich scanned datasets or reference external ones with
 # CSV/Excel metadata files — see "Editing metadata" in the README.
